@@ -7,6 +7,8 @@ import (
   "github.com/hschendel/stl"
 )
 
+const version = "1.0.1"
+
 // Command line parameters
 type Params struct {
   Command string
@@ -57,6 +59,7 @@ func (run *Run) ParseParams() {
   flag.StringVar(&matrixStr, "m", "[[1 0 0 0] [0 1 0 0] [0 0 1 0] [0 0 0 1]]", "Transformation matrix for transform, same format as printed using -showmat.  Default is the identity matrix.")
   flag.Parse()
   p.Matrix = run.parseMat4("-m", matrixStr)
+  
   if flag.NArg() == 1 || flag.NArg() == 2 {
     p.Command = flag.Arg(0)
     if flag.NArg() == 2 {
@@ -145,8 +148,8 @@ func (run *Run) WriteOutput() bool {
 }
 
 func (run *Run) Help() {
-  fmt.Fprintln(os.Stderr,
-`stltool can be used to measure, validate, and transform .stl files used
+  fmt.Fprintln(os.Stderr, "stltool v" + version + `
+stltool can be used to measure, validate, and transform .stl files used
 for 3D printing.
 
 Usage:
