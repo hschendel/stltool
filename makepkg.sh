@@ -1,5 +1,5 @@
 #!/bin/bash
-VERSION=stltool-1.0.1
+VERSION=stltool-1.0.2
 IDENTIFIER=de.hschendel.stltool
 
 rm -f ${VERSION}.pkg
